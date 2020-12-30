@@ -28,9 +28,6 @@ public class Solver {
         }
 
         public int compareTo(SearchNode that) {
-//            if (priority(that.board) == priority(this.board)) return 0;
-//            else if (priority(this.board) < priority(that.board) || (priority(this.board) == priority(that.board) && this.board.manhattan() < that.board.manhattan()))
-//                return -1;
             if (this.priority == that.priority) return 0;
             else if (this.priority < that.priority || (this.priority == that.priority && this.board.manhattan() < that.board.manhattan()))
                 return -1;
@@ -62,7 +59,7 @@ public class Solver {
         pqTwin.insert(firstNodeTwin);
         // while (true) {
         while (true) {
-            currentMin = pq.delMin(); // here firstNode and currentMin is linked. How to choose a min value for
+            currentMin = pq.delMin(); 
             currentMinTwin = pqTwin.delMin();
             Board prev = currentMin.board;
             Board prevTwin = currentMinTwin.board;
@@ -82,9 +79,6 @@ public class Solver {
                         pq.insert(nextNode);
                 } else
                     pq.insert(nextNode);
-//                StdOut.print(nextNode.board);
-//                StdOut.println(" Moves = " + (currentMin.stepNode + 1) + " Manhattan " + nextNode.board.manhattan()
-//                        + " Priority = " + nextNode.priority);
             }
 
             for (Board neighborTwin : prevTwin.neighbors()) {
@@ -94,9 +88,6 @@ public class Solver {
                         pqTwin.insert(nextNodeTwin);
                 } else
                     pqTwin.insert(nextNodeTwin);
-//                StdOut.print(nextNode.board);
-//                StdOut.println(" Moves = " + (currentMin.stepNode + 1) + " Manhattan " + nextNode.board.manhattan()
-//                        + " Priority = " + nextNode.priority);
             }
         }
 //        solvable = false;
@@ -105,10 +96,6 @@ public class Solver {
 
     // is the initial board solvable? (see below)
     public boolean isSolvable() {
-//        Solver solverTwin = new Solver(firstNode.board.twin());
-//        for (Board boardTwin : solverTwin.solution())
-//            return true;
-//        return false;
         boolean b = solvable;
         return b;
     }
